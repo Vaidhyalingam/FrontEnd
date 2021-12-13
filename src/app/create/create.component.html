@@ -1,0 +1,77 @@
+<h1>User Management</h1>
+<a routerLink="/create" class="btn btn-success">Create</a>
+&nbsp;
+<a routerLink="/read" class="btn btn-primary">Read</a>
+
+<div class="container mt-5">
+  <div
+    *ngIf="errorMsg"
+    class="
+      col-lg-6
+      mt-2
+      alert alert-danger alert-warning alert-dismissible
+      fade
+      show
+    "
+    role="alert"
+  >
+    <strong>{{ errorMsg }}</strong>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <div
+    *ngIf="successMsg"
+    class="col-lg-6 mt-2 alert alert-success alert-dismissible fade show"
+    role="alert"
+  >
+    <strong>{{ successMsg }}</strong>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <form [formGroup]="userForm">
+    <div class="col-lg-6 mt-2">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        placeholder="Enter Full Name"
+      />
+    </div>
+
+    <div class="col-lg-6 mt-2">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="email"
+        placeholder="Enter Email"
+      />
+    </div>
+
+    <div class="col-lg-6 mt-2">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="mobile"
+        placeholder="Enter Mobile Number"
+      />
+    </div>
+
+    <div class="col-lg-6 mt-2" *ngIf="!getparamid" (click)="userSubmit()">
+      <button class="btn btn-primary btn-sm">Create</button>
+    </div>
+
+    <div class="col-lg-6 mt-2" *ngIf="getparamid" (click)="userUpdate()">
+      <button class="btn btn-dark btn-sm">Update</button>
+    </div>
+  </form>
+</div>

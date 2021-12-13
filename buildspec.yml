@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      - echo Installing source NPM dependencies...
+      - cd frontend
+      - npm install
+      - npm install -g @angular/cli
+      - npm i amazon-cognito-identity-js
+  build:
+    commands:
+      - echo Build started
+      - pwd
+      - ng build
+      - ls
+      - pwd
+      - ls
+artifacts:
+  commands:
+    - echo Build started
+    - pwd
+    - ls
+  files:
+    - "**/*"
+  base-directory: "dist/*"
+  discard-paths: no

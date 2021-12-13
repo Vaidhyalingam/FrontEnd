@@ -1,0 +1,49 @@
+<h1>User Management</h1>
+<a routerLink="/create" class="btn btn-success">Create</a>
+&nbsp;
+<a routerLink="/read" class="btn btn-primary">Read</a>
+
+<div class="container mt-5">
+  <div
+    *ngIf="successMsg"
+    class="col-lg-6 mt-2 alert alert-success alert-dismissible fade show"
+    role="alert"
+  >
+    <strong>{{ successMsg }}</strong>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Edits</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let us of readData">
+        <th scope="row">{{ us.id }}</th>
+        <td>{{ us.name }}</td>
+        <td>{{ us.email }}</td>
+        <td>{{ us.mobile }}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="deleteID(us.id)">
+            Delete
+          </button>
+          &nbsp;
+          <a [routerLink]="['/create', us.id]" class="btn btn-sm btn-success">
+            Update
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
